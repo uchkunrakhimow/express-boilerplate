@@ -1,6 +1,21 @@
 {
   "name": "express-boilerplate",
   "description": "Production-ready Express.js API boilerplate with TypeScript, Prisma, Swagger, and JWT authentication.",
+  "version": "1.0.0",
+  "keywords": [
+    "express",
+    "typescript",
+    "boilerplate",
+    "starter-kit",
+    "prisma",
+    "swagger",
+    "zod",
+    "jwt",
+    "api",
+    "nodejs",
+    "backend",
+    "rest-api"
+  ],
   "scripts": {
     "start": "node dist/index.js",
     "start:dev": "tsx watch --env-file=.env --no-deprecation -r tsconfig-paths/register src/index.ts",
@@ -42,19 +57,5 @@
     "tsx": "^4.19.4",
     "typescript": "^5.8.3",
     "typescript-eslint": "^8.32.0"
-  },
-  "keywords": [
-    "express",
-    "typescript",
-    "boilerplate",
-    "starter-kit",
-    "prisma",
-    "swagger",
-    "zod",
-    "jwt",
-    "api",
-    "nodejs",
-    "backend",
-    "rest-api"
-  ]
+  }
 }
