@@ -21,7 +21,6 @@ A customizable Express.js boilerplate with TypeScript, Prisma ORM, Zod validatio
 ## 🗂️ Project Structure
 
 ```
-
 src/
 ├── app/
 │   ├── config/         # Environment and app config
@@ -36,9 +35,8 @@ src/
 prisma/
 ├── schema.prisma       # Prisma schema
 docs/
-├── \*.yaml              # Swagger YAML specs
+├── \*.yaml             # Swagger YAML specs
 .env.example            # Environment variable template
-
 ```
 
 ---
@@ -122,7 +120,7 @@ src / app / middlewares / verify.middleware.ts;
 
 ## ✅ Validation
 
-## All request body validation is powered by [Zod](https://github.com/colinhacks/zod) and errors are handled centrally with proper formatting.
+All request body validation is powered by [Zod](https://github.com/colinhacks/zod) and errors are handled centrally with proper formatting.
 
 ## ✨ Features
 
@@ -139,12 +137,10 @@ src / app / middlewares / verify.middleware.ts;
 
 - Node.js `>=22.x` (see `.nvmrc`)
 - PostgreSQL (or compatible database for Prisma)
-- pnpm (recommended) or npm
+- npm (recommended) or pnpm
 
 ---
 
 ## 📝 License
 
 MIT — [LICENSE](./LICENSE)
-
----
