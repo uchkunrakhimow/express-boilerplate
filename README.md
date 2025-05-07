@@ -1,146 +1,149 @@
-# express-boilerplate
+# 🚀 Express boilerplate
 
-A customizable Express.js boilerplate with TypeScript, Prisma ORM, Zod validation, JWT authentication, Swagger API documentation, and Docker support — designed for building scalable and maintainable RESTful APIs in production.
+A scalable and production-ready Express.js API boilerplate built with TypeScript, Prisma, Zod, and JWT — featuring clean modular structure, Swagger docs, and Docker support.
 
 ---
 
 ## 📦 Tech Stack
 
-- **Node.js** v22 (LTS)
+- **Node.js** v22+
 - **Express.js** v5+
 - **TypeScript** v5+
-- **Prisma** (PostgreSQL support)
-- **Zod** (for request validation)
-- **JWT** (Authentication)
-- **Swagger / OpenAPI** (API docs)
-- **ESLint + Prettier** (Code formatting and linting)
-- **Docker-ready** (via external setup)
+- **Prisma ORM** with PostgreSQL
+- **Zod** for validation
+- **JWT** for authentication
+- **Swagger (OpenAPI)** for API docs
+- **Docker** for containerized deployments
+- **ESLint + Prettier** for code quality
 
 ---
 
-## 🗂️ Project Structure
+## 🗂️ Folder Structure
 
 ```
+
 src/
 ├── app/
-│   ├── config/         # Environment and app config
-│   ├── helpers/        # Shared helper functions
+│   ├── config/         # Env and app config
 │   ├── middlewares/    # Global middlewares
-│   ├── modules/        # Feature-based modules (auth, user, etc.)
-│   │   ├── auth/
-│   │   └── user/
-│   ├── app.ts          # Express app initialization
-│   └── routes.ts       # All routes registration
-├── index.ts            # App entrypoint
-prisma/
-├── schema.prisma       # Prisma schema
-docs/
-├── \*.yaml             # Swagger YAML specs
-.env.example            # Environment variable template
+│   ├── modules/        # Feature modules (auth, user, etc.)
+│   ├── app.ts          # Express app setup
+│   └── routes.ts       # Route registration
+├── index.ts            # Entrypoint
+docs/                   # Swagger YAML docs
+prisma/                 # Prisma schema and migrations
+.env.example            # Sample environment variables
+
 ```
 
 ---
 
 ## ⚙️ Getting Started
 
-### 1. Clone the repository
-
 ```bash
+# Clone the repo
 git clone https://github.com/uchkunrakhimow/express-boilerplate.git
 cd express-boilerplate
-```
 
-### 2. Setup environment variables
-
-```bash
-cp .env.example .env
-```
-
-Update values inside `.env` as needed.
-
-### 3. Install dependencies
-
-```bash
+# Install dependencies
 npm install
-```
 
-### 4. Generate Prisma client
+# Copy env config and update
+cp .env.example .env
 
-```bash
-npm prisma:generate
-```
+# Generate Prisma client
+npm run prisma:generate
 
-### 5. Run development server
-
-```bash
-npm start:dev
+# Start development server
+npm run start:dev
 ```
 
 ---
 
-## 🧪 Available Scripts
+## 🐳 Docker Setup
 
-| Script                  | Description                             |
-| ----------------------- | --------------------------------------- |
-| `start`                 | Run production server                   |
-| `start:dev`             | Start dev server with hot reload        |
-| `build`                 | Build project using TypeScript compiler |
-| `prisma:migration`      | Run a new Prisma DB migration (dev)     |
-| `prisma:migration:prod` | Apply Prisma migrations in prod         |
-| `prisma:seed`           | Seed database with initial data         |
-| `prisma:studio`         | Open Prisma Studio (GUI)                |
-| `prisma:generate`       | Regenerate Prisma client                |
+To run the app in containers:
+
+```bash
+docker-compose up --build
+```
+
+- API will be available at `http://localhost:3000`
+- PostgreSQL runs on port `5432`
+- Prisma will use `DATABASE_URL` from `.env`
+
+See: [`Dockerfile`](./Dockerfile), [`docker-compose.yml`](./docker-compose.yml)
 
 ---
 
-## 📚 API Documentation
+## 📚 API Docs
 
-After starting the server, visit:
+Interactive documentation available at:
 
 ```
 http://localhost:3000/api-docs
 ```
 
-Documentation is powered by Swagger using OpenAPI 3.0 and auto-loads from the `docs/` directory:
-
-- `docs/auth.yaml`
-- `docs/users.yaml`
+- Based on `docs/*.yaml` using Swagger (OpenAPI 3.0)
+- Examples: `auth.yaml`, `users.yaml`
 
 ---
 
-## 🔐 Authentication
+## 🔐 Auth & Validation
 
-Uses JWT-based authentication. Update `JWT_SECRET` in your `.env` file to a secure random string. Auth middleware is included in:
-
-```ts
-src / app / middlewares / verify.middleware.ts;
-```
+- JWT-based authentication middleware:
+  [`verify.middleware.ts`](./src/app/middlewares/verify.middleware.ts)
+- Input validation using [Zod](https://zod.dev), with centralized error formatting
 
 ---
 
-## ✅ Validation
+## 📜 Scripts
 
-All request body validation is powered by [Zod](https://github.com/colinhacks/zod) and errors are handled centrally with proper formatting.
+| Script                  | Description                       |
+| ----------------------- | --------------------------------- |
+| `start`                 | Start production server (`dist/`) |
+| `start:dev`             | Start dev server with hot reload  |
+| `build`                 | Compile TypeScript project        |
+| `prisma:migration`      | Create new DB migration (dev)     |
+| `prisma:migration:prod` | Apply DB migrations (production)  |
+| `prisma:generate`       | Generate Prisma client            |
+| `prisma:seed`           | Seed database                     |
+| `prisma:studio`         | Launch Prisma Studio GUI          |
 
-## ✨ Features
+---
 
-- Clean modular folder structure (modules per feature)
-- Centralized error handling
-- Swagger-ready docs
-- Scalable and extensible
-- Fully typed with strict TypeScript
-- Production-ready with minimal configuration
+## 🧑‍💻 Contributing
+
+We welcome community contributions!
+Please read the [CONTRIBUTING.md](./CONTRIBUTING.md) for guidelines on how to:
+
+- Fork and branch properly
+- Write Conventional Commits
+- Submit a clear pull request (PR)
+
+---
+
+## 📓 Changelog
+
+See [CHANGELOG.md](./CHANGELOG.md) for a detailed list of features and updates across all versions. Follows [Semantic Versioning](https://semver.org).
 
 ---
 
 ## 📌 Requirements
 
-- Node.js `>=22.x` (see `.nvmrc`)
-- PostgreSQL (or compatible database for Prisma)
-- npm (recommended) or pnpm
+- **Node.js** ≥ 22.x (see `.nvmrc`)
+- **PostgreSQL** for Prisma database
+- **npm** or `pnpm` (your choice)
+- **Docker** (optional, but recommended for consistency)
 
 ---
 
 ## 📝 License
 
 MIT — [LICENSE](./LICENSE)
+
+---
+
+## 🙌 Acknowledgements
+
+Built and maintained with ❤️ by [@uchkunrakhimow](https://github.com/uchkunrakhimow)
